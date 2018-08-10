@@ -46,6 +46,12 @@
   tags:
       - plugins
 
+- name: include elasticsearch-keystore-values.yml
+  include: elasticsearch-keystore-values.yml
+  when: es_keystore_additional_values is defined
+  tags:
+    - keystore
+
   #We always execute xpack as we may need to remove features
 - name: include xpack/elasticsearch-xpack.yml
   include: xpack/elasticsearch-xpack.yml
