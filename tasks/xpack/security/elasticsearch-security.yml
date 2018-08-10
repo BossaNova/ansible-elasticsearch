@@ -8,13 +8,7 @@
 - name: create the elasticsearch keystore
   block:
   - name: create the keystore if it doesn't exist yet
-    become: yes
-    command: >
-     {{es_home}}/bin/elasticsearch-keystore create
-    args:
-      creates: "{{ es_conf_dir }}/elasticsearch.keystore"
-    environment:
-      ES_PATH_CONF: "{{ es_conf_dir }}"
+    include: elasticsearch-create-keystore.yml
 
   - name: Check if bootstrap password is set
     become: yes
